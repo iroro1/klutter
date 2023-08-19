@@ -13,16 +13,16 @@ const Navbar = () => {
         <Logo />
 
         <div className="text-[#eee] md:flex gap-4 hidden">
-          <a href={"#findItems"}>Find Items</a>
-          <a href={"#list"}>List Items</a>
+          <Link href={"#findItems"}>Find Items</Link>
+          <Link href={"#list"}>List Items</Link>
         </div>
         <div className="text-[#eee] hidden md:block">
-          <a
+          <Link
             className="bg-[#eee] text-[#151f4c] p-2 rounded-md"
             href={"#comingSoon"}
           >
             Download Apps
-          </a>
+          </Link>
         </div>
 
         <div className="md:hidden">
@@ -41,26 +41,26 @@ const Navbar = () => {
         {showMenu && (
           <ClickAwayListener onClickAway={() => setShowMenu(false)}>
             <div className="bg-[#fff] min-h-[150px] min-w-[200px] absolute right-1 top-[65px] shadow-md border border-[#eee] rounded-sm flex flex-col p-3">
-              <a
+              <Link
                 onClick={() => setShowMenu(false)}
                 className="py-3 px-2"
                 href={"#findItems"}
               >
                 Find Items
-              </a>
-              <a
+              </Link>
+              <Link
                 onClick={() => setShowMenu(false)}
                 className="py-3 px-2"
                 href={"#list"}
               >
                 List Items
-              </a>
-              <a
+              </Link>
+              <Link
                 className="bg-[#eee] text-[#151f4c] py-3 px-2 rounded-md"
                 href={"#comingSoon"}
               >
                 Download Apps
-              </a>
+              </Link>
             </div>
           </ClickAwayListener>
         )}
