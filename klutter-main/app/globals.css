@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  --scroll-behavior: smooth !important;
+  scroll-behavior: smooth !important;
+}
+.container {
+  width: 90%;
+  max-width: 1449px;
+  margin: 0 auto;
+}
