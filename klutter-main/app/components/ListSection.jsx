@@ -29,7 +29,7 @@ const ListSection = () => {
           {categories.map((cat) => (
             <div
               className={`py-2 px-3 border cursor-pointer rounded-lg ${
-                selectedCat === cat ? "bg-[#444888] text-white" : ""
+                selectedCat === cat ? "bg-[#3d0c02] text-white" : ""
               }`}
               key={cat}
               onClick={() => setSelectedCat(cat)}
