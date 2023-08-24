@@ -10,7 +10,7 @@ export default function Home() {
       <Navbar />
       <Hero />
       <ListSection />
-      <Appreciations />
+      {/* <Appreciations /> */}
       <Footer />
     </main>
   );

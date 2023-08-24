@@ -7,7 +7,7 @@ const Appreciations = () => {
     { e: "tomlee4real@gmail.com", count: 3 },
   ];
   return (
-    <div className="border-t">
+    <div className="border-t mt-5">
       <div className="container py-4">
         <h2 className="font-[600] mb-4">Highest Givers this week</h2>
 

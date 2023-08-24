@@ -4,11 +4,11 @@ import React from "react";
 
 const Hero = () => {
   return (
-    <div className="min-h-[500px] bg-slate-100 bg-gradient-to-r from-[#151f4c] to-[#4d0135] pt-[80px]">
+    <div className="min-h-[500px] bg-slate-100 bg-hero bg-gradient-to-r from-[#151f4c] to-[#4d0135]  pt-[80px]">
       <div className="container flex justify-start items-center min-h-[400px]">
         <h1 className="text-[#fff] font-[500] text-[52px] leading-[30px]">
           Klutt<span className="text-[#ccc] font-[100]">er</span>
-          <p className="text-[20px] text-[#ccc] mt-5">
+          <p className="text-[20px] text-[#ccc] mt-5 max-w-[500px]">
             Unveil a Realm of Complimentary Delights: Your Definitive Stop for
             Free Goodies!
           </p>

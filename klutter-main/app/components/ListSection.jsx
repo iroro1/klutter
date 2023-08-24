@@ -22,8 +22,8 @@ const ListSection = () => {
   const [selectedCat, setSelectedCat] = useState(categories[0]);
   return (
     <div>
-      <div className="container">
-        <div className="py-3 text-[22px] font-[500]">Filters</div>
+      <div className="container pt-10">
+        {/* <div className="py-3 text-[22px] font-[500]">Filters</div> */}
 
         <div className="flex flex-wrap gap-2">
           {categories.map((cat) => (
@@ -40,25 +40,25 @@ const ListSection = () => {
         </div>
         <div
           id="findItems"
-          className="flex items-center gap-4 flex-wrap justify-center mt-[50px] border-t pt-[30px]"
+          className="flex items-center gap-6 flex-wrap justify-center mt-[50px]  pt-[30px]"
         >
           {db.map((prd) => (
             <div
               key={prd.Id}
-              className="h-[400px] w-[280px] border border-[#eee] shadow-md rounded-[8px] mb-[15px] flex flex-col justify-between"
+              className="h-[350px] w-[230px] border border-[#eee] shadow-md rounded-[8px] mb-[15px] flex flex-col justify-between overflow-hidden"
             >
-              <div className="h-[20%] px-3">
-                <h5 className="text-[13px] font-[600] text-[#151f4c] text-center pt-[20px] px-1 leading-4">
+              <img className="h-[60%] w-full" src={prd.img} alt={prd.Title} />
+              <div className="px-3">
+                <h5 className="text-[13px] font-[600] text-[#151f4c] text-center pt-[5px] px-1 leading-4">
                   {prd.Title}
                 </h5>
                 <p className="text-[12px] text-center text-neutral-500">
                   {prd.Maker}
                 </p>
               </div>
-              <img className="h-[60%] w-full" src={prd.img} alt={prd.Title} />
-              <div className="px-3 h-[50px]">
-                <div className="flex justify-between text-[12px] py-3 items-center">
-                  <span className="h-[30px] bg-slate-500 flex justify-center items-center px-3 rounded-md text-[#fff]">
+              <div className="px-3 ">
+                <div className="flex justify-between text-[12px] py-3 items-center cursor-pointer">
+                  <span className="h-[30px] bg-sky-700 hover:bg-sky-900 flex justify-center items-center px-3 rounded-md text-[#fff]">
                     Ask For this.
                   </span>
                   {/* <span className="text-neutral-700">See More</span> */}
