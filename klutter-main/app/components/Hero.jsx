@@ -1,19 +1,45 @@
-import React from "react";
+"use client";
+import { useContext, useEffect, useState } from "react";
+import StoreContext from "../context/StoreContext";
+import Navbar from "./Navbar";
 
-// https://plus.unsplash.com/premium_photo-1673548916754-aefad0c0955a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80
+const Hero = ({ pressedCard }) => {
+  const [showHero, setShowHero] = useState(true);
+  const ctx = useContext(StoreContext);
+  console.log(pressedCard, ctx);
 
-const Hero = () => {
   return (
-    <div className="min-h-[500px] bg-slate-100 bg-hero bg-gradient-to-r from-[#151f4c] to-[#4d0135]  pt-[80px]">
-      <div className="container flex justify-start items-center min-h-[400px]">
-        <h1 className="text-[#fff] font-[500] text-[52px] leading-[30px]">
-          Klutt<span className="text-[#ccc] font-[100]">er</span>
-          <p className="text-[20px] text-[#ccc] mt-5 max-w-[500px]">
-            Unveil a Realm of Complimentary Delights: Your Definitive Stop for
-            Free Goodies!
-          </p>
-        </h1>
-      </div>
+    <div
+      className={
+        showHero
+          ? "min-h-[500px] relative bgImage"
+          : "min-h-[66px] relative bgImage "
+      }
+    >
+      <Navbar showHero={showHero} setShowHero={setShowHero} />
+      {showHero && (
+        <div className="min-h-[500px]  bg-gradient-to-r from-[#040506] to-[#2716274a] z-10 flex items-center">
+          <div className="container flex-col justify-start items-center ">
+            <h1 className="text-[#fff] font-[500] text-[40px] mt-[50px] md:text-[54px] leading-[54px]">
+              Buy and Sell <br />
+              <span className="text-[#F90] font-[700]">Pre-Loved</span> Items
+            </h1>
+            <p className="text-[16px] font-[400] text-[#ccc] mt-5 max-w-[500px] mb-[42px]">
+              Buying and selling pre-loved household materials made easy.
+              Whether you're looking to give a new home to your gently used
+              items or searching for affordable and unique pieces to refresh
+              your living space
+            </p>
+
+            <button
+              className="bg-[#f90] text-[#000] text-[14px] p-2 py-2 rounded-md "
+              onClick={() => setShowHero(false)}
+            >
+              Buy Item
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

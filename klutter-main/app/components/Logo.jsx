@@ -1,6 +1,6 @@
 import Link from "next/link";
 import React from "react";
-import klutter from "../assets/images/klutter.png";
+import klutter from "../assets/images/logo.svg";
 import Image from "next/image";
 
 const Logo = () => {
@@ -9,9 +9,9 @@ const Logo = () => {
       href={"/"}
       className="text-[#fff] font-[500] text-[22px] leading-[20px]"
     >
-      {/* <Image src={klutter} className="max-h-[20px] max-w-[80px]" /> */}
-      Klutt<span className="text-[#ccc] font-[100]">er</span>
-      <p className="text-[9px] text-[#ccc]">Dont need it , Dont Keep It !</p>
+      <Image src={klutter} className="max-h-[20px] max-w-[80px]" />
+      {/* Klutt<span className="text-[#ccc] font-[100]">er</span> */}
+      {/* <p className="text-[9px] text-[#ccc]">Dont need it , Dont Keep It !</p> */}
     </Link>
   );
 };

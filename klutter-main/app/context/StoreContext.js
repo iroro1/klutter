@@ -6,13 +6,13 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 export const AppCtx = createContext();
 
 const StoreContext = ({ children }) => {
-  const [appState, setAppState] = useState({});
+  const [appState, setAppState] = useState({ showHero: true });
   return (
-    <AppCtx.Provider value={(appState, setAppState)}>
-      <LocalizationProvider dateAdapter={AdapterDayjs}>
-        {children}
-      </LocalizationProvider>
+    // <LocalizationProvider dateAdapter={AdapterDayjs}>
+    <AppCtx.Provider value={{ store: appState, setStore: setAppState }}>
+      {children}
     </AppCtx.Provider>
+    // </LocalizationProvider>
   );
 };
 
