@@ -1,5 +1,5 @@
-import React from "react";
 import Image from "next/image";
+import React from "react";
 import prof from "../assets/images/prof.svg";
 const Footer = () => {
   const reviews = [

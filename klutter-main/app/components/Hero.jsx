@@ -1,6 +1,6 @@
 "use client";
 import { useContext, useEffect, useState } from "react";
-import StoreContext, { AppCtx } from "../context/StoreContext";
+import { AppCtx } from "../context/StoreContext";
 import Navbar from "./Navbar";
 
 const Hero = () => {
