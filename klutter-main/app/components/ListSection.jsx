@@ -1,9 +1,9 @@
 "use client";
-import { useState, useEffect, useContext } from "react";
 import { ClickAwayListener } from "@mui/material";
-import ad1 from "../assets/images/ad1.svg";
+import { motion } from "framer-motion";
 import Image from "next/image";
-import { motion, useAnimation } from "framer-motion";
+import { useContext, useState } from "react";
+import ad1 from "../assets/images/ad1.svg";
 import { AppCtx } from "../context/StoreContext";
 
 const nameVariant = {
