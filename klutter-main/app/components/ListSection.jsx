@@ -1,8 +1,15 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect, useContext } from "react";
 import { ClickAwayListener } from "@mui/material";
-import ad1 from "../assets/images/ad1.png";
+import ad1 from "../assets/images/ad1.svg";
 import Image from "next/image";
+import { motion, useAnimation } from "framer-motion";
+import { AppCtx } from "../context/StoreContext";
+
+const nameVariant = {
+  visible: { x: 50, y: 150, transition: { delay: 5, duration: 2 } },
+  hidden: { x: 450, y: 250 },
+};
 const ListSection = ({ setShowHero }) => {
   const db = [
     {
@@ -190,7 +197,8 @@ const ListSection = ({ setShowHero }) => {
       pickUpAddress: "6 Alex McQueen St, Lagos",
     },
   ];
-
+  const ctx = useContext(AppCtx);
+  console.log(ctx);
   const categoriesMain = ["All (Paid and Free)", "Paid Items", "Free Items"];
   const [selectedCategory, setSelectedCategory] = useState(categoriesMain[0]);
   const [showDD, setShowDD] = useState(false);
@@ -198,7 +206,7 @@ const ListSection = ({ setShowHero }) => {
   const [detail, setDetail] = useState(false);
   const onSearchFn = () => {};
   return (
-    <div>
+    <motion.div>
       <div className="container pt-10">
         <div className="md:flex w-full items-center gap-8">
           <div className="relative md:w-[200px]">
@@ -250,30 +258,33 @@ const ListSection = ({ setShowHero }) => {
         >
           {db.map((prd) =>
             prd?.showAd ? (
-              <div className="bg-[#3C947A] p-7 lg:p-0 flex items-center min-h-[252px] w-full lg:w-[974px] my-3">
-                <div className="relative hidden lg:block  w-[325px]">
-                  <Image
-                    className="absolute bottom-[-122px] left-0 h-[300px] w-[325px] translate-x-[80] "
-                    src={ad1}
-                  />
+              <>
+                <div className="bg-[#3C947A] p-7 lg:p-0 flex items-center min-h-[252px] w-full  my-3">
+                  <div className="relative hidden lg:block  w-[325px]">
+                    <Image
+                      className="absolute bottom-[-122px] left-0 h-[300px] w-[325px] translate-x-[80] "
+                      src={ad1}
+                    />
+                  </div>
+                  <div className="text-white w-[544px]">
+                    <h3 className="text-[26px] md:text-[32px] font-[700]">
+                      Klutter P2P Charity and Commerce
+                    </h3>
+                    <p className="text-[16px] font[400]">
+                      We have cracked the p2p charity and commerce code. Browse
+                      through the product catalog or contact your favorite
+                      sellers
+                    </p>
+                    <button className="bg-[#f90] text-[#000] text-[14px] p-2 py-2 rounded-md mt-2  ">
+                      Continue Shopping
+                    </button>
+                  </div>
                 </div>
-                <div className="text-white w-[544px]">
-                  <h3 className="text-[26px] md:text-[32px] font-[700]">
-                    Klutter P2P Charity and Commerce
-                  </h3>
-                  <p className="text-[16px] font[400]">
-                    We have cracked the p2p charity and commerce code. Browse
-                    through the product catalog or contact your favorite sellers
-                  </p>
-                  <button className="bg-[#f90] text-[#000] text-[14px] p-2 py-2 rounded-md mt-2  ">
-                    Continue Shopping
-                  </button>
-                </div>
-              </div>
+              </>
             ) : (
-              <div
+              <motion.div
                 onClick={() => {
-                  setShowHero(false);
+                  ctx.setStore({ ...ctx.store, showHero: false });
                   setDetail(prd.id);
                 }}
                 key={prd.id}
@@ -292,32 +303,49 @@ const ListSection = ({ setShowHero }) => {
                   </div>
                   {detail === prd.id ? (
                     <ClickAwayListener onClickAway={() => setDetail(false)}>
-                      <div className="mt-[13px] text-white pb-[37px]">
+                      <motion.div
+                        animate={{
+                          minHeight: "200px",
+                          transition: {
+                            duration: 1,
+                            delay: 1,
+                          },
+                        }}
+                        initial={{
+                          transition: {
+                            duration: 1,
+                            delay: 1,
+                          },
+                        }}
+                        className="mt-[13px] text-white pb-[37px]"
+                      >
                         <h4 className="text-[18px] font-[700]">{prd.title}</h4>
-                        <p className="mt-[6px]">{prd.description}</p>
+                        <p className="mt-[6px] text-[14px] font-extralight">
+                          {prd.description}
+                        </p>
                         <h5 className="text-[18px] font-[700] mt-[27px]">
                           Number of Years used
                         </h5>
-                        <p className="text-[14px] font-[400]">
+                        <p className="text-[14px] font-extralight">
                           {prd.NumOfYearsUsed} Years
                         </p>
                         <h5 className="text-[18px] font-[700] mt-4">
                           Seller’s Details
                         </h5>
-                        <p className="text-[14px] font-[400]">
+                        <p className="text-[14px] font-extralight">
                           Address - {prd.sellersDetail.address}
                         </p>
-                        <p className="text-[14px] font-[400]">
+                        <p className="text-[14px] font-extralight">
                           Phone number: {prd.sellersDetail.phone}
                         </p>
 
                         <h5 className="text-[18px] font-[700] mt-[27px]">
                           Pickup Address
                         </h5>
-                        <p className="text-[14px] font-[400]">
+                        <p className="text-[14px] font-extralight">
                           {prd.pickUpAddress}
                         </p>
-                      </div>
+                      </motion.div>
                     </ClickAwayListener>
                   ) : (
                     <div className="mt-[13px] text-white pb-[37px]">
@@ -326,12 +354,12 @@ const ListSection = ({ setShowHero }) => {
                     </div>
                   )}
                 </div>
-              </div>
+              </motion.div>
             )
           )}
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

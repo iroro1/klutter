@@ -1,13 +1,15 @@
 "use client";
 import { useContext, useEffect, useState } from "react";
-import StoreContext from "../context/StoreContext";
+import StoreContext, { AppCtx } from "../context/StoreContext";
 import Navbar from "./Navbar";
 
-const Hero = ({ pressedCard }) => {
+const Hero = () => {
   const [showHero, setShowHero] = useState(true);
-  const ctx = useContext(StoreContext);
-  console.log(pressedCard, ctx);
-
+  const ctx = useContext(AppCtx).store.showHero;
+  useEffect(() => {
+    if (showHero && !ctx) setShowHero(false);
+    else setShowHero(true);
+  }, [ctx]);
   return (
     <div
       className={
@@ -32,7 +34,7 @@ const Hero = ({ pressedCard }) => {
             </p>
 
             <button
-              className="bg-[#f90] text-[#000] text-[14px] p-2 py-2 rounded-md "
+              className="bg-[#f90] text-[#000] text-[14px] p-2 py-2 rounded-md transition-all du"
               onClick={() => setShowHero(false)}
             >
               Buy Item

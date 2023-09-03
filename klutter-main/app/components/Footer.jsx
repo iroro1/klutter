@@ -1,6 +1,6 @@
 import React from "react";
-import Logo from "./Logo";
 import Image from "next/image";
+import prof from "../assets/images/prof.svg";
 const Footer = () => {
   const reviews = [
     {
@@ -60,7 +60,7 @@ const Footer = () => {
                 width={33}
                 height={33}
                 className="rounded-full"
-                src={user.img}
+                src={prof}
               />
               <h5>{user.name}</h5>
             </div>
